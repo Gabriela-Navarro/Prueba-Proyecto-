@@ -1,0 +1,25 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container" [formGroup]="formGroups">
+    <div class="left">
+      <div class="header">
+        <h2 class="animation a1">Welcome</h2>
+      </div>
+      <div class="form">
+        <input type="text" class="form-field animation a3" placeholder="UserName" formControlName="usuario" >
+        <input type="text" class="form-field animation a3" placeholder="First Name" formControlName="nombre">
+        <input type="text" class="form-field animation a3" placeholder="Last Name" formControlName="apellido">
+        <input type="date" class="form-field animation a3" placeholder="Age" formControlName="edad">
+        <mat-radio-group formControlName="sexo"  class = "example-full-width animation a3" appearance="outline">
+            <mat-radio-button value="F"><label>Femenino </label></mat-radio-button>&nbsp;&nbsp;
+            <mat-radio-button value="M"><label>Masculino </label></mat-radio-button>&nbsp;&nbsp;
+            <mat-radio-button value="N/A"><label>Prefiero No decir</label></mat-radio-button>
+        </mat-radio-group>
+        <input type="email" class="form-field animation a3" placeholder="Email" formControlName="correo">
+        <input type="password" class="form-field animation a4" placeholder="Password" formControlName="contrase">
+        <input type="file" class="form-field1 animation a4" formControlName="imagen" accept="imagen" (change)="imagenSelect($event)">
+        <textarea type="text" placeholder="Descripcion"class="form-field1 animation a4" formControlName="descripcion" rows="4" cols="50"></textarea>
+        <button class="animation a6" (click)="guardarUsuario()" >Register</button>
+      </div>
+    </div>
+    <div class="right"><a href="#" class="modal__close">&times;</a></div>
+</div>

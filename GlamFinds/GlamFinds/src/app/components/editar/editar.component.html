@@ -1,0 +1,48 @@
+<div class="container" style="width:100%; height:100%;">
+    <div class="content" style="width:100%; height:100%;">
+      <mat-drawer-container style="width:100%; height:100%;">
+        <mat-drawer mode="side" opened><app-menu></app-menu></mat-drawer>
+        <mat-drawer-content><app-menu2></app-menu2>
+    <div class="fondo">
+      <div class="formulario">
+        <br>
+        <h1 class="titulo">Editar Perfil</h1>
+        <br>
+        <div class="example-form">
+          <div class="form1">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Usuario</mat-label>
+              <mat-icon matSuffix>usuario</mat-icon>
+              <input [(ngModel)]="posts_generales.usuario" type="text" matInput>
+            </mat-form-field>
+          </div>
+          <div class="form2">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Descripcion</mat-label>
+              <mat-icon matSuffix>descripcion</mat-icon>
+              <textarea [(ngModel)]="posts_generales.descripcion" type="text" matInput > </textarea>
+            </mat-form-field>
+          </div>
+          <div class="form3">
+              <input type="file" (change)="imagenSelect($event)">
+              <div *ngIf="posts_generales.imagen && !imgUrl">
+                <br>
+                <img [src]="'../../../assets/img/' + posts_generales.imagen" alt="Imagen actual" width="100">
+              </div>
+              <div *ngIf="imgUrl">
+                <img [src]="imgUrl" alt="Nueva imagen" width="100">
+              </div>
+          </div>
+          <div class="button-container">
+            <button class="example-button" mat-raised-button color="primary" (click)="guardarModificar() ">Guardar Cambio</button>
+            <button class="example-button" mat-raised-button color="primary" (click)="regresar()" >Regresar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </mat-drawer-content>
+    </mat-drawer-container>
+    </div>
+  </div>
+
+

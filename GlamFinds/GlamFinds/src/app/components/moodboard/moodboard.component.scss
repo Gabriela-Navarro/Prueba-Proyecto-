@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── Outer wrapper ───────────────────────────────────────── */
+.mb-wrapper {
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Top bar ─────────────────────────────────────────────── */
+.mb-topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;          /* centrado vertical */
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 40px 24px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E8E2DB;
+  flex-shrink: 0;
+  flex-wrap: nowrap;            /* nunca rompe a nueva línea */
+}
+
+.mb-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;          /* ocupa todo el espacio sobrante */
+  min-width: 0;     /* permite que el texto se trunque si fuera necesario */
+}
+
+.mb-brand-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #C4A882;
+}
+
+.mb-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0A0A0A;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;   /* el título no baja de línea */
+}
+
+/* ── Body (sidebar + canvas) ─────────────────────────────── */
+.mb-body {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex: 1 1 0;
+  min-height: 0;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* ── Left sidebar ────────────────────────────────────────── */
+.mb-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: #FAFAF8;
+  border-right: 1px solid #E8E2DB;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px 20px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.mb-sidebar-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8A8A8A;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mb-sidebar-label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 1.5px;
+  background: #C4A882;
+  border-radius: 1px;
+}
+
+/* ── Drop zone ───────────────────────────────────────────── */
+.dropzone {
+  width: 100%;
+  border: 1.5px dashed #C4A882;
+  border-radius: 14px;
+  background: #F7F3EE;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dropzone:hover {
+  border-color: #A8896A;
+  background: #EDE8E1;
+}
+
+.dropzone-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 16px;
+}
+
+.dropzone-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5A5A5A;
+  margin: 0;
+  text-align: center;
+}
+.dropzone-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  color: #B8B0A8;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Tips ────────────────────────────────────────────────── */
+.mb-tips { display: flex; flex-direction: column; gap: 10px; }
+
+.mb-tips-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8A8A8A;
+  margin: 0;
+}
+
+.mb-tips-list {
+  margin: 0;
+  padding: 0 0 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.mb-tips-list li {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: #8A8A8A;
+  line-height: 1.5;
+}
+
+/* ── Divider label ───────────────────────────────────────── */
+.mb-divider-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mb-divider-label::before,
+.mb-divider-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #E8E2DB;
+}
+.mb-divider-label span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #C4A882;
+  white-space: nowrap;
+}
+
+.mb-editorial-note {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-style: italic;
+  color: #B8B0A8;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Moodboard canvas ────────────────────────────────────── */
+.moodboard-container {
+  position: relative;
+  flex: 1 1 0;          /* ocupa ~75% del ancho restante */
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  align-self: stretch;
+  /* fondo crema muy suave — las imágenes resaltan */
+  background: #FEFCFA;
+  background-image:
+    linear-gradient(rgba(196, 168, 130, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196, 168, 130, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  overflow: hidden;
+}
+
+/* Empty state — centrado absoluto dentro del canvas */
+.mb-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  pointer-events: none;
+}
+.mb-empty-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #D4C9BC;
+  margin: 0;
+  text-align: center;
+}
+.mb-empty-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: #C8C0B8;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Draggable items ─────────────────────────────────────── */
+.moodboard-item {
+  position: absolute;
+  cursor: move;
+  /* cap size — max-width/max-height override inline width/height from [ngStyle] */
+  max-width: 220px !important;
+  max-height: 220px !important;
+  min-width: 80px;
+  min-height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #FFFFFF;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.13),
+    0 1px 4px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.7);
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+.moodboard-item:hover {
+  box-shadow:
+    0 10px 32px rgba(0, 0, 0, 0.20),
+    0 0 0 2px #C4A882;
+  z-index: 20;
+  transform: scale(1.02);
+}
+.moodboard-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* imagen completa, sin recorte */
+  display: block;
+  pointer-events: none;
+  background: #F7F3EE;   /* fondo crema para letras negras de contain */
+}
+
+/* Delete button — visible solo en hover del item */
+.delete-btn {
+  position: absolute !important;
+  top: 6px !important;
+  right: 6px !important;
+  width: 20px !important;
+  height: 20px !important;
+  background: rgba(10, 10, 10, 0.65) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 50% !important;
+  font-size: 9px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 30 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
+}
+.moodboard-item:hover .delete-btn { opacity: 1 !important; }
+.delete-btn:hover {
+  background: #C4A882 !important;
+  transform: none !important;
+}
+
+/* ── Topbar actions group ────────────────────────────────── */
+.mb-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* ── Preview button ──────────────────────────────────────── */
+.mb-preview-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px 24px !important;
+  background: transparent !important;
+  color: #0A0A0A !important;
+  border: 1.5px solid #0A0A0A !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease !important;
+}
+.mb-preview-btn:hover {
+  background: #0A0A0A !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px) !important;
+}
+.mb-preview-btn--active {
+  background: #0A0A0A !important;
+  color: #FFFFFF !important;
+}
+.mb-preview-btn--active:hover { background: #C4A882 !important; }
+
+/* ── Download button ─────────────────────────────────────── */
+.mb-download-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px 28px !important;
+  background: #0A0A0A !important;
+  color: #FFFFFF !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  white-space: nowrap !important;   /* nunca rompe el texto del botón */
+  flex-shrink: 0 !important;        /* el botón no se encoge */
+  transition: background 0.25s ease, transform 0.15s ease !important;
+}
+.mb-download-btn:hover  { background: #C4A882 !important; transform: translateY(-1px) !important; }
+.mb-download-btn:active { transform: translateY(0) !important; }

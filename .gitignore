@@ -1,0 +1,11 @@
+# Node.js
+conexionbase-proyecto/conexionbase-proyecto/node_modules/
+conexionbase-proyecto/conexionbase-proyecto/.env
+*.log
+
+# Angular
+GlamFinds/GlamFinds/node_modules/
+GlamFinds/GlamFinds/dist/
+
+# Logs y configuraciones generales
+.DS_Store

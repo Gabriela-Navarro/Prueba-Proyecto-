@@ -1,0 +1,98 @@
+/* GlamFinds — Edit Profile (Settings) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+.container { width: 100%; height: 100%; }
+.content   { width: 100%; height: 100%; }
+
+.fondo {
+  background: #F7F3EE;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  padding: 48px 24px;
+}
+
+.formulario {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+}
+
+.titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #0A0A0A;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.example-form { display: flex; flex-direction: column; gap: 16px; }
+
+.example-full-width { width: 100%; }
+
+.form1, .form2, .form3 { width: 100%; }
+
+/* Mat form field override */
+.mat-form-field {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.form3 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.form3 input[type="file"] {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #8A8A8A;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.example-button {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Override mat-raised-button primary */
+.example-button[color="primary"],
+.example-button.mat-primary {
+  background: #0A0A0A !important;
+  color: #FFFFFF !important;
+}
+.example-button[color="primary"]:hover,
+.example-button.mat-primary:hover {
+  background: #C4A882 !important;
+  transform: translateY(-1px);
+}
+.example-button:last-child {
+  background: transparent !important;
+  color: #8A8A8A !important;
+  border: 1px solid #E8E2DB !important;
+}
+.example-button:last-child:hover {
+  color: #1A1A1A !important;
+  border-color: #1A1A1A !important;
+  transform: none;
+}

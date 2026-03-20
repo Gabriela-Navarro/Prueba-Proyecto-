@@ -1,0 +1,18 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+  <div class="left">
+    <div class="header">
+      <h2 class="animation a1">GLAMFINDS</h2>
+      <h4 class="animation a2">Log in to your account using your username and password</h4>
+    </div>
+    <div class="form">
+      <input type="text"  [(ngModel)]="user.usuario" class="form-field animation a3" placeholder="UserName">
+      <input type="password"  [(ngModel)]="user.contrase" class="form-field animation a4" placeholder="Password">
+      <br>
+      <p class="animation a5"><a class="btn" mat-menu-item (click)="openRegistrar()"><h3>Registrate<i class="uil uil-expand-arrows"></i></h3></a></p>
+      <button class="animation a6" (click)="ingresarbase()">LOGIN</button>
+    </div>
+  </div>
+  <div class="right"></div>
+</div>
+

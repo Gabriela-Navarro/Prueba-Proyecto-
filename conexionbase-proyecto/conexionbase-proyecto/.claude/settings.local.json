@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(FILE=\"c:/Users/gabri/OneDrive/Documentos/Codigo-Fuente-SP2-main/conexionbase-proyecto/conexionbase-proyecto/src/app/rutas/glamfinds.js\")",
+      "Read(//c/Users/gabri/OneDrive/Documentos/Codigo-Fuente-SP2-main/conexionbase-proyecto/conexionbase-proyecto/**)"
+    ]
+  }
+}

@@ -1,0 +1,187 @@
+/* GlamFinds — Register Page / Dialog */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+
+* { box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; }
+
+/* --- Outer wrapper ---
+   Works both as full-page and inside MatDialog
+   overflow visible so the dialog's own scroll takes over  */
+.container {
+  display: flex;
+  min-height: 100%;
+  width: 100%;
+  background: #FFFFFF;
+  overflow: visible;
+}
+
+/* --- Left panel: Form (scrollable) --- */
+.left {
+  width: 100%;
+  max-width: 520px;
+  padding: 48px 56px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;   /* start, not center, so content isn't clipped */
+  background: #FFFFFF;
+  position: relative;
+  overflow-y: auto;              /* ← enables internal scroll */
+  max-height: 90vh;              /* ← cap height when inside a dialog */
+  flex-wrap: nowrap;
+  animation: slideInLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Gold accent stripe */
+.left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 72px;
+  background: #C4A882;
+  pointer-events: none;
+}
+
+/* --- Right panel: fashion image (hidden when dialog is small) --- */
+.right {
+  flex: 1;
+  background-color: #0A0A0A;
+  background-image: url(https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1200&q=80);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  transition: 0.6s;
+  min-height: 300px;
+}
+
+.right a.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 26px;
+  text-decoration: none;
+  line-height: 1;
+  transition: color 0.2s ease;
+  z-index: 10;
+}
+.right a.modal__close:hover { color: #FFFFFF; }
+
+/* --- Section header --- */
+.header {
+  margin-bottom: 28px;
+}
+.header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #0A0A0A;
+  margin: 0;
+  letter-spacing: -1px;
+  line-height: 1;
+  animation-name: fadeUp;
+}
+
+/* --- Form fields --- */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  height: 48px;
+  padding: 0 18px;
+  border: 1px solid #E8E2DB;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: #1A1A1A;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: #FAFAF8;
+  margin-top: 12px;
+  width: 100%;
+  display: block;
+}
+.form-field::placeholder { color: #B8B8B8; }
+.form-field:focus {
+  border-color: #C4A882;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(196, 168, 130, 0.12);
+}
+
+/* File input + textarea */
+.form-field1 {
+  margin-top: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #1A1A1A;
+  border: 1px solid #E8E2DB;
+  border-radius: 10px;
+  padding: 11px 18px;
+  background: #FAFAF8;
+  width: 100%;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+  display: block;
+}
+.form-field1:focus { border-color: #C4A882; }
+
+/* Radio group */
+.example-full-width {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 14px;
+  padding: 12px 18px;
+  background: #FAFAF8;
+  border: 1px solid #E8E2DB;
+  border-radius: 10px;
+}
+
+/* Register button */
+.form > button {
+  margin-top: 24px;
+  height: 50px;
+  border: none;
+  background: #0A0A0A;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+  width: 100%;
+}
+.form > button:hover  { background: #C4A882; transform: translateY(-1px); }
+.form > button:active { transform: translateY(0); }
+
+/* Entrance animations */
+.animation { animation-name: fadeUp; animation-duration: 0.4s; animation-fill-mode: both; }
+.a1 { animation-delay: 0.05s; }
+.a2 { animation-delay: 0.10s; }
+.a3 { animation-delay: 0.16s; }
+.a4 { animation-delay: 0.22s; }
+.a5 { animation-delay: 0.28s; }
+.a6 { animation-delay: 0.34s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive / small screens */
+@media (max-width: 768px) {
+  .left  { max-width: 100%; padding: 36px 28px 48px; }
+  .right { display: none; }
+}
