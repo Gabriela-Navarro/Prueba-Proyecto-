@@ -68,6 +68,7 @@ export class PerfilComponent  implements OnInit {
     contrase:'',
     imagen:''
   }
+  activeTab = 'posts';
   status = 'Enable';
   variable: string = "";
   id_new: number;
@@ -204,13 +205,15 @@ export class PerfilComponent  implements OnInit {
       if (this.toggle[index]) {
         this.backend1.eliminarLike(post,navegante).subscribe(y=> {
           this.toggle[index] = false;
-          this.likes[post].cantidad--;
+          if (!this.likes[post]) this.likes[post] = { cantidad: 0 } as any;
+          if (this.likes[post].cantidad > 0) this.likes[post].cantidad--;
           this.actualizarEstadoLocalStorage();
         });
       } else {
         let listadoLikes = new Likes(post, navegante);
         this.backend1.guardarLikes(listadoLikes).subscribe(y => {
           this.toggle[index] = true;
+          if (!this.likes[post]) this.likes[post] = { cantidad: 0 } as any;
           this.likes[post].cantidad++;
           this.actualizarEstadoLocalStorage();
         });
@@ -309,6 +312,35 @@ export class PerfilComponent  implements OnInit {
         );
       }
     }
+    unsavePost(post: number) {
+      const id_new = localStorage.getItem('ids');
+      if (!id_new) return;
+      const navegante = parseInt(id_new);
+      this.backend1.eliminarSave(post, navegante).subscribe(() => {
+        localStorage.removeItem(`saveState_${post}`);
+        this.dataSource = this.dataSource.filter(p => p.id_post !== post);
+      });
+    }
+
+    unsaveGuardado(post: number) {
+      const id_new = localStorage.getItem('ids');
+      if (!id_new) return;
+      const navegante = parseInt(id_new);
+      this.backend1.eliminarSave(post, navegante).subscribe(() => {
+        localStorage.removeItem(`saveState_${post}`);
+        this.dataSource4 = this.dataSource4.filter(p => p.id_post !== post);
+      });
+    }
+
+    unsaveArticulo(post: number) {
+      const id_new = localStorage.getItem('ids');
+      if (!id_new) return;
+      const navegante = parseInt(id_new);
+      this.backend1.eliminarSaveA(post, navegante).subscribe(() => {
+        this.dataSource5 = this.dataSource5.filter(p => p.id_post !== post);
+      });
+    }
+
     isImage(fileName: string): boolean {
       return fileName.match(/\.(jpeg|jpg|gif|png)$/) != null;
     }

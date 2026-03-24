@@ -23,18 +23,33 @@ import { ShareDataService } from 'src/app/services/share-data.service';
       imagen:''
 
   }
+  dataSource: any[] = [];
+  dataSource5: any[] = [];
+  activeTab = 'publicaciones';
+
   constructor(private fb: FormBuilder,private share : ShareDataService , private router:Router, private backend4:BackendService,private activateRouter:ActivatedRoute,public snackBar: MatSnackBar,public dialog: MatDialog) {}
   ngOnInit(): void {
     const id_new = localStorage.getItem('ids');
     if(id_new){
-      this.backend4.obtenerUsuario(Number(id_new)).subscribe(x=>{
+      const userId = Number(id_new);
+      this.backend4.obtenerUsuario(userId).subscribe(x=>{
         this.posts_generales.usuario = x.datos[0].usuario;
         this.posts_generales.descripcion=x.datos[0].descripcion;
         this.posts_generales.imagen =x.datos[0].imagen;
         console.log(x.datos[0]);
       });
+      this.backend4.PostPerfil(userId).subscribe((x: any) => {
+        this.dataSource = x.datos || x || [];
+      });
+      this.backend4.obtenerArticulos().subscribe((x: any) => {
+        this.dataSource5 = x.datos || x || [];
+      });
     }
+  }
 
+  isImage(fileName: string): boolean {
+    if (!fileName) return false;
+    return /\.(jpg|jpeg|png|gif|webp|avif)$/i.test(fileName);
   }
   guardarModificar() {
     const id_new = localStorage.getItem('ids');

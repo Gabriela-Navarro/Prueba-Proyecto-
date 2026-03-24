@@ -4,7 +4,11 @@
       "Bash(find /c/Users/gabri/OneDrive/Documentos/Codigo-Fuente-SP2-main/GlamFinds/GlamFinds/src/app/services -type f -name *.ts)",
       "Bash(printf '%s\\\\n' 'c:\\\\Users\\\\gabri\\\\OneDrive\\\\Documentos\\\\Codigo-Fuente-SP2-main\\\\GlamFinds\\\\GlamFinds\\\\src\\\\app\\\\components\\\\widget\\\\widget.component.html' 'c:\\\\Users\\\\gabri\\\\OneDrive\\\\Documentos\\\\Codigo-Fuente-SP2-main\\\\GlamFinds\\\\GlamFinds\\\\src\\\\app\\\\components\\\\widget\\\\widget.component.scss' 'c:\\\\Users\\\\gabri\\\\OneDrive\\\\Documentos\\\\Codigo-Fuente-SP2-main\\\\GlamFinds\\\\GlamFinds\\\\src\\\\app\\\\components\\\\tendencias\\\\tendencias.component.html' 'c:\\\\Users\\\\gabri\\\\OneDrive\\\\Documentos\\\\Codigo-Fuente-SP2-main\\\\GlamFinds\\\\GlamFinds\\\\src\\\\app\\\\components\\\\tendencias\\\\tendencias.component.scss' 'c:\\\\Users\\\\gabri\\\\OneDrive\\\\Documentos\\\\Codigo-Fuente-SP2-main\\\\GlamFinds\\\\GlamFinds\\\\src\\\\app\\\\components\\\\tabla-tendencias\\\\tabla-tendencias.component.html' 'c:\\\\Users\\\\gabri\\\\OneDrive\\\\Documentos\\\\Codigo-Fuente-SP2-main\\\\GlamFinds\\\\GlamFinds\\\\src\\\\app\\\\components\\\\tabla-tendencias\\\\tabla-tendencias.component.scss')",
       "Bash(ls -d \"c:\\\\Users\\\\gabri\\\\OneDrive\\\\Documentos\\\\Codigo-Fuente-SP2-main\\\\GlamFinds\\\\GlamFinds\\\\src\\\\app\\\\components\"/*/)",
-      "Bash(ls -d */)"
+      "Bash(ls -d */)",
+      "Read(//c/Users/gabri/OneDrive/Desktop/Prueba-Proyecto-/conexionbase-proyecto/conexionbase-proyecto/**)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\gabri\\OneDrive\\Desktop\\Prueba-Proyecto-\\conexionbase-proyecto\\conexionbase-proyecto\\src\\app\\rutas"
     ]
   }
 }

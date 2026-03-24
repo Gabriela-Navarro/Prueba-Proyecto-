@@ -104,6 +104,42 @@ mat-drawer-content {
 .mat-tab-label-active { color: var(--clr-text) !important; }
 .mat-ink-bar { background-color: var(--clr-gold) !important; height: 2px !important; }
 
+/* Perfil tabs — override MDC blue */
+.perfil-tabs {
+  --mdc-tab-indicator-active-indicator-color: #C9687A;
+  --mat-tab-header-active-label-text-color: #C9687A;
+  --mat-tab-header-active-hover-label-text-color: #C9687A;
+  --mat-tab-header-active-focus-label-text-color: #C9687A;
+  --mat-tab-header-inactive-label-text-color: #A8A09A;
+  --mat-tab-header-inactive-hover-label-text-color: #C9687A;
+  --mat-tab-header-active-ripple-color: rgba(201, 104, 122, 0.10);
+  --mat-tab-header-inactive-ripple-color: rgba(201, 104, 122, 0.06);
+  --mdc-ripple-color: #C9687A;
+  --mat-ripple-color: rgba(201, 104, 122, 0.10);
+}
+.perfil-tabs .mat-ink-bar { background-color: #C9687A !important; height: 1.5px !important; }
+.perfil-tabs .mat-tab-label-active { color: #C9687A !important; }
+.perfil-tabs .mat-ripple-element { background-color: rgba(201, 104, 122, 0.10) !important; }
+
+/* MDC-specific selectors for hover/focus state */
+.perfil-tabs .mat-mdc-tab .mdc-tab__ripple::before,
+.perfil-tabs .mat-mdc-tab:hover .mdc-tab__ripple::before,
+.perfil-tabs .mat-mdc-tab:focus .mdc-tab__ripple::before {
+  background-color: #C9687A !important;
+}
+.perfil-tabs .mat-mdc-tab-header .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+  border-color: #C9687A !important;
+}
+.perfil-tabs .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label {
+  color: #C9687A !important;
+}
+.perfil-tabs .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab__text-label {
+  color: #A8A09A;
+}
+.perfil-tabs .mat-mdc-tab:not(.mat-mdc-tab-disabled):hover .mdc-tab__text-label {
+  color: #C9687A !important;
+}
+
 /* Mat Icon Button */
 .mat-icon-button { color: var(--clr-muted) !important; }
 .mat-icon-button .mat-icon { font-size: 20px; width: 20px; height: 20px; }
@@ -766,3 +802,72 @@ img.imgs {
 .yellow { color: var(--clr-gold) !important; }
 
 /* df-messenger removed — chat moved to /asistente page */
+
+/* =================================================================
+   SNACKBAR — Toast notifications (login feedback)
+   ================================================================= */
+
+/* Contenedor base compartido */
+.snack-exito .mdc-snackbar__surface,
+.snack-error .mdc-snackbar__surface {
+  border-radius: 10px !important;
+  padding: 0 !important;
+  min-width: 260px !important;
+  max-width: 360px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12) !important;
+}
+
+/* Ocultar el botón de acción (se pasa '' como actionLabel) */
+.snack-exito .mat-mdc-snack-bar-action,
+.snack-error .mat-mdc-snack-bar-action {
+  display: none !important;
+}
+
+/* Label del mensaje */
+.snack-exito .mdc-snackbar__label,
+.snack-error .mdc-snackbar__label {
+  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.3px !important;
+  padding: 14px 20px 14px 50px !important;  /* espacio para el ícono */
+  color: #FFFFFF !important;
+  position: relative !important;
+}
+
+/* Ícono vía ::before */
+.snack-exito .mdc-snackbar__label::before,
+.snack-error .mdc-snackbar__label::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ── Éxito: fondo negro elegante, ícono check verde ── */
+.snack-exito .mdc-snackbar__surface {
+  background: #0F0F0F !important;
+}
+.snack-exito .mdc-snackbar__label::before {
+  background-color: #2E7D52;
+  /* check SVG inline */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2 6 5 9 10 3'/%3E%3C/svg%3E");
+}
+
+/* ── Error: fondo vino oscuro, ícono X ── */
+.snack-error .mdc-snackbar__surface {
+  background: #5C1A26 !important;
+}
+.snack-error .mdc-snackbar__label::before {
+  background-color: #922030;
+  /* X SVG inline */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'%3E%3Cline x1='3' y1='3' x2='9' y2='9'/%3E%3Cline x1='9' y1='3' x2='3' y2='9'/%3E%3C/svg%3E");
+}

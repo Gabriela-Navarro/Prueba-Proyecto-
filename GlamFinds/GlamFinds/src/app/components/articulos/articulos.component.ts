@@ -129,13 +129,15 @@ export class ArticulosComponent implements OnInit{
       if (this.toggle[index]) {
         this.backend1.eliminarLikeA(post,navegante).subscribe(y=> {
           this.toggle[index] = false;
-          this.likes[post].cantidad--;
+          if (!this.likes[post]) this.likes[post] = { cantidad: 0 } as any;
+          if (this.likes[post].cantidad > 0) this.likes[post].cantidad--;
           this.actualizarEstadoLocalStorage();
         });
       } else {
         let listadoLikes = new Likes(post, navegante);
         this.backend1.guardarLikesA(listadoLikes).subscribe(y => {
           this.toggle[index] = true;
+          if (!this.likes[post]) this.likes[post] = { cantidad: 0 } as any;
           this.likes[post].cantidad++;
           this.actualizarEstadoLocalStorage();
         });

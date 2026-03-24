@@ -7,7 +7,7 @@ const express = require('express');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'C:/Users/gabri/OneDrive/Documentos/Codigo-Fuente-SP2-main/GlamFinds/GlamFinds/src/assets/img');
+      cb(null, 'C:/Users/gabri/OneDrive/Desktop/Prueba-Proyecto-/GlamFinds/GlamFinds/src/assets/img');
     },
     filename: function (req, file, cb) {
       const ext = path.extname(file.originalname);
@@ -1258,8 +1258,9 @@ const router = express.Router();
 
     router.post('/agregarART', upload.single('imagen'), async (req, res) => {
         const {titulo,contenido, autor, categoria} = req.body;
+        const imagenFilename = req.file ? req.file.filename : "";
         const query = `INSERT INTO posts_articulos (titulo,contenido,imagen,autor,categoria) VALUES (?,?,?,?,?)`;
-        const values = [titulo,contenido,"", autor, categoria];
+        const values = [titulo,contenido,imagenFilename, autor, categoria];
         conn.query(query, values, (error, filas) => {
         if (error) {
             console.error(error);

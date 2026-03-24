@@ -101,14 +101,11 @@
 }
 
 .art-card-img {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
   display: block;
-  z-index: 1;
   transition: transform 0.5s ease;
 }
 .art-card-cover:hover .art-card-img { transform: scale(1.06); }
@@ -289,6 +286,28 @@
   color: #8A8A8A !important;
 }
 
+.art-card-like-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+
+  mat-icon {
+    font-size: 14px !important;
+    width: 14px !important;
+    height: 14px !important;
+    transition: color 0.18s ease;
+  }
+}
+
+.art-like-active {
+  color: #C9687A !important;
+}
+
 .btn-leer-mas {
   display: inline-flex;
   align-items: center;
@@ -338,19 +357,27 @@
   z-index: 1;
   background: #FFFFFF;
   border-radius: 20px;
-  width: min(90vw, 760px);
+  width: min(92vw, 960px);
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
   box-shadow: 0 32px 100px rgba(0,0,0,0.28);
-  scrollbar-width: none;
-  &::-webkit-scrollbar { display: none; }
+  display: flex;
+  flex-direction: column;
+}
+
+.art-modal-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
 }
 
 .art-modal-close {
-  position: sticky;
+  position: absolute;
   top: 12px;
-  float: right;
-  margin: 12px 12px 0 0;
+  right: 12px;
+  z-index: 20;
+  margin: 0;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -368,22 +395,23 @@
   &:hover { background: #E8E2DB; color: #0A0A0A; }
 }
 
-.art-modal-cover {
-  width: 100%;
-  height: 280px;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
+.art-modal-image-panel {
+  width: 42%;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #F7F3EE;
+  border-radius: 20px 0 0 20px;
+  min-height: 500px;
 }
 
 .art-modal-content-area {
-  padding: 28px 32px 36px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 28px 36px;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 }
 
 .art-modal-cat {

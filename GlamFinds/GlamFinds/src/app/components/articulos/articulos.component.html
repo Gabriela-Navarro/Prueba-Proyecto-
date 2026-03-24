@@ -31,10 +31,9 @@
                 <!-- Cover image (clickable → opens modal) -->
                 <label [for]="'art'+articulo.id_post" class="art-card-cover">
                   <img *ngIf="articulo.imagen" class="art-card-img"
-                       [src]="articulo.imagen.startsWith('http') ? articulo.imagen : '../../../assets/img/'+articulo.imagen"
-                       (error)="$any($event.target).style.display='none'"
+                       [src]="articulo.imagen.startsWith('http') ? articulo.imagen : 'assets/img/'+articulo.imagen"
                        alt="portada" loading="lazy">
-                  <div class="art-card-img-placeholder">
+                  <div class="art-card-img-placeholder" *ngIf="!articulo.imagen">
                     <span class="art-placeholder-mono">GF</span>
                     <span class="art-placeholder-label">{{articulo.name_categoria}}</span>
                   </div>
@@ -48,7 +47,7 @@
                   <div class="art-card-excerpt" [innerHTML]="articulo.contenido"></div>
 
                   <div class="art-card-author-row">
-                    <img [src]="'../../../assets/img/'+perfil[articulo.id_user]?.imagen"
+                    <img [src]="'assets/img/'+perfil[articulo.id_user]?.imagen"
                          alt="autor" class="art-author-avatar" loading="lazy">
                     <span class="art-author-name">{{articulo.usuario}}</span>
                   </div>
@@ -56,7 +55,9 @@
                   <div class="art-card-bottom">
                     <div class="art-card-stats">
                       <span class="art-stat-item">
-                        <mat-icon class="art-stat-icon">favorite</mat-icon>
+                        <button class="art-card-like-btn" (click)="like(articulo.id_post, i); $event.stopPropagation()">
+                          <mat-icon [ngClass]="toggle[i] ? 'art-like-active' : 'art-stat-icon'">favorite</mat-icon>
+                        </button>
                         {{likes[articulo.id_post]?.cantidad || 0}}
                       </span>
                       <span class="art-stat-item">
@@ -79,20 +80,20 @@
                   <!-- Close button -->
                   <label [for]="'art'+articulo.id_post" class="art-modal-close">✕</label>
 
-                  <!-- Cover image -->
-                  <div class="art-modal-cover" *ngIf="articulo.imagen">
-                    <img [src]="articulo.imagen.startsWith('http') ? articulo.imagen : '../../../assets/img/'+articulo.imagen"
-                         (error)="$any($event.target).parentElement.style.display='none'"
-                         alt="portada">
+                  <div class="art-modal-layout">
+
+                  <!-- Left: imagen completa -->
+                  <div class="art-modal-image-panel" *ngIf="articulo.imagen"
+                       [style.background-image]="'url(' + (articulo.imagen.startsWith('http') ? articulo.imagen : 'assets/img/'+articulo.imagen) + ')'">
                   </div>
 
-                  <!-- Content -->
+                  <!-- Right: Content -->
                   <div class="art-modal-content-area">
                     <span class="art-modal-cat">{{articulo.name_categoria}}</span>
                     <h1 class="art-modal-title">{{articulo.titulo}}</h1>
 
                     <div class="art-modal-meta">
-                      <img [src]="'../../../assets/img/'+perfil[articulo.id_user]?.imagen"
+                      <img [src]="'assets/img/'+perfil[articulo.id_user]?.imagen"
                            alt="autor" class="art-modal-author-avatar" loading="lazy">
                       <span class="art-modal-author-name">{{articulo.usuario}}</span>
                     </div>
@@ -171,6 +172,9 @@
 
                   </div>
                   <!-- /art-modal-content-area -->
+
+                  </div>
+                  <!-- /art-modal-layout -->
                 </div>
                 <!-- /art-modal-box -->
               </div>

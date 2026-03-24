@@ -73,6 +73,7 @@ export class AgregarComponent {
         this.imgUrl = event.target.result;
       }
       this.msg = file;
+      this.formGroups.patchValue({ imagen: file.name }); // ← línea nueva
     } else {
       console.error('No se seleccionó ningún archivo');
     }

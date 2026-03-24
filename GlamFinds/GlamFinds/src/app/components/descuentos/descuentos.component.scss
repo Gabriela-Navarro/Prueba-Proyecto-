@@ -1,10 +1,144 @@
 /* GlamFinds — Descuentos Feed — inherits global feed styles from styles.scss */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 .container { width: 100%; height: 100%; }
 .content   { width: 100%; height: 100%; }
-section.app-content { padding: 0 28px 40px; min-height: calc(100vh - 64px); }
+section.app-content { padding: 0 28px 40px; min-height: calc(100vh - 64px); background: #FAF8F5; }
+
+/* ── Filter bar ──────────────────────────────────────────── */
+.selectors {
+  display: flex;
+  gap: 8px;
+  padding: 14px 0 12px;
+  align-items: center;
+  position: sticky;
+  top: 54px;
+  z-index: 90;
+  background: #F7F3EE;
+  border-bottom: 1px solid #E8E2DB;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.button--dress {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+.button--dress .button__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border: 1px solid #E0DBD3;
+  border-radius: 20px;
+  background: #FFFFFF;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.button--dress .button__wrapper:hover { border-color: #C9687A; background: #F9EEF0; }
+.button--dress .button__text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #6B6560;
+}
+
+.feed-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-left: 4px; }
+.feed-chip {
+  padding: 5px 13px;
+  border-radius: 14px;
+  border: 1px solid #E0DBD3;
+  background: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  color: #6B6560;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.feed-chip--active { background: #F9EEF0; border-color: #C9687A; color: #8B3A48; font-weight: 500; }
+
+/* ── Color/Clothes Modal ─────────────────────────────────── */
+.color-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.42);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.color-modal.show { display: flex !important; }
+
+.color-modal-content {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+  max-width: 520px;
+  width: 90vw;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.color-modal-content .close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #8A8A8A;
+  line-height: 1;
+  font-weight: 300;
+  transition: color 0.2s ease;
+}
+.color-modal-content .close:hover { color: #1A1612; }
+
+.color-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 4px; }
+.clothes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 4px; max-height: 300px; overflow-y: auto; }
+
+.color-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 7px 4px;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+  border: 1px solid transparent;
+}
+.color-box:hover { background: #F3F0EB; border-color: #E0DBD3; }
+.color-box span { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8px; font-weight: 500; letter-spacing: 0.4px; text-transform: uppercase; color: #A8A09A; text-align: center; line-height: 1.2; }
+.color-box::before { content: ''; width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(0,0,0,0.08); display: block; transition: transform 0.2s ease; }
+.color-box:hover::before { transform: scale(1.1); }
+
+.color-box.yellow::before  { background: #F5D020; }
+.color-box.beige::before   { background: #E8D5B0; border-color: #D0BC98; }
+.color-box.white::before   { background: #F9F9F9; border-color: #D0D0D0; }
+.color-box.brown::before   { background: #8B5E3C; }
+.color-box.purple::before  { background: #7B3F9E; }
+.color-box.orange::before  { background: #FF7043; }
+.color-box.black::before   { background: #1A1A1A; }
+.color-box.grey::before    { background: #9E9E9E; }
+.color-box.red::before     { background: #E53935; }
+.color-box.pink::before    { background: #E91E8C; }
+.color-box.green::before   { background: #43A047; }
+.color-box.blue::before    { background: #1976D2; }
+.color-box.bag::before, .color-box.belt::before, .color-box.bowtie::before,
+.color-box.bracelet::before, .color-box.dress::before, .color-box.earrings::before,
+.color-box.glasses::before, .color-box.gloves::before, .color-box.hat::before,
+.color-box.headband::before, .color-box.jumpsuit::before, .color-box.necklace::before,
+.color-box.outerwear::before, .color-box.pants::before, .color-box.ring::before,
+.color-box.scarf::before, .color-box.shoes::before, .color-box.shorts::before,
+.color-box.skirt::before, .color-box.sunglasses::before, .color-box.top::before,
+.color-box.vest::before, .color-box.watch::before { background: #EDE9E2; border-color: #D0CBC3; }
+
+.actions { margin-top: 16px; text-align: right; }
+.clear-btn { background: none; border: 1px solid #E0DBD3; border-radius: 12px; padding: 6px 16px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 500; color: #6B6560; cursor: pointer; transition: all 0.15s ease; }
+.clear-btn:hover { border-color: #C9687A; color: #C9687A; background: #F9EEF0; }
 
 ul.projects { columns: 3 250px; column-gap: 20px; list-style: none; padding: 0; margin: 0; height: auto; overflow: visible; display: block; }
 .containers { break-inside: avoid; display: inline-block; width: 100%; margin-bottom: 20px; vertical-align: top; }

@@ -23,6 +23,7 @@ import { Filter } from 'bad-words';
 })
 export class DescuentosComponent  implements OnInit {
   dataSource: Array<Publicidad> = new Array<Publicidad>();
+  filteredItems: Array<Publicidad> = [];
   comentarios: Array<Comments2[]> = [];
   perfil: Array<Usuario2> = [];
   likes: Array<Likes_cant> = [];
@@ -35,6 +36,15 @@ export class DescuentosComponent  implements OnInit {
   id_us: number;
   showWidget: boolean = true;
   usuariolog = Number(localStorage.getItem('ids'));
+  isModalOpen: boolean = false;
+  isModalOpen2: boolean = false;
+  activeChip: string = 'Todo';
+  toggleModal() { this.isModalOpen = !this.isModalOpen; }
+  toggleModal2() { this.isModalOpen2 = !this.isModalOpen2; }
+  limpiarFiltro(): void { this.filteredItems = [...this.dataSource]; this.activeChip = 'Todo'; this.isModalOpen = false; this.isModalOpen2 = false; }
+  seleccionarPorRango(color: string) { this.isModalOpen = false; }
+  seleccionarPorRopa(prenda: string) { this.isModalOpen2 = false; }
+  filtrarChip(categoria: string) { this.activeChip = categoria; this.filteredItems = categoria === 'Todo' ? [...this.dataSource] : this.dataSource.filter(p => p.name_categoria?.toLowerCase() === categoria.toLowerCase()); }
   constructor(private router:Router,private backend1: BackendService,private activateRouter:ActivatedRoute,public dialog: MatDialog,public snackBar: MatSnackBar){ }
   showShortDesciption = true
   articulo: any={
@@ -65,6 +75,7 @@ export class DescuentosComponent  implements OnInit {
   ngOnInit(): void {
     this.backend1.obtenerDescuentos().subscribe(async x => {
       this.dataSource = x.datos;
+      this.filteredItems = [...this.dataSource];
       console.log(x.datos);
       this.dataSource.forEach(post => {
         this.comentario[post.id_post] = '';

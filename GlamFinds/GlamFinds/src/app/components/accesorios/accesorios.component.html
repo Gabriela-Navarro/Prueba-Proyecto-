@@ -107,12 +107,12 @@
                     <label [for]="'p'+articulo.id_post" class="pin-media-label">
                       <ng-container *ngIf="isImage(articulo.imagen); else cardVid">
                         <img class="pin-img"
-                             [src]="'../../../assets/img/' + articulo.imagen"
+                             [src]="'assets/img/' + articulo.imagen"
                              alt="imagen" loading="lazy">
                       </ng-container>
                       <ng-template #cardVid>
                         <video class="pin-img" [muted]="true" loop preload="none">
-                          <source [src]="'../../../assets/img/' + articulo.imagen" type="video/mp4">
+                          <source [src]="'assets/img/' + articulo.imagen" type="video/mp4">
                         </video>
                       </ng-template>
                     </label>
@@ -131,7 +131,7 @@
                     <div class="pin-bottom-row">
                       <div class="pin-user">
                         <img class="pin-avatar"
-                             src="../../../assets/img/{{perfil[articulo.id_user]?.imagen}}"
+                             src="assets/img/{{perfil[articulo.id_user]?.imagen}}"
                              loading="lazy" alt="avatar">
                         <span class="pin-username">{{articulo.usuario}}</span>
                       </div>
@@ -165,13 +165,13 @@
                     <div class="modal-left">
                       <ng-container *ngIf="isImage(articulo.imagen); else modalVid">
                         <div class="modal-img-wrap">
-                          <img [src]="'../../../assets/img/' + articulo.imagen"
+                          <img [src]="'assets/img/' + articulo.imagen"
                                alt="post" class="modal-img" loading="lazy">
                         </div>
                       </ng-container>
                       <ng-template #modalVid>
                         <video class="modal-img" controls [muted]="true" loop>
-                          <source [src]="'../../../assets/img/' + articulo.imagen" type="video/mp4">
+                          <source [src]="'assets/img/' + articulo.imagen" type="video/mp4">
                         </video>
                       </ng-template>
 
@@ -195,7 +195,7 @@
                       <!-- Header -->
                       <div class="modal-header-row">
                         <img class="modal-avatar"
-                             src="../../../assets/img/{{perfil[articulo.id_user]?.imagen}}"
+                             src="assets/img/{{perfil[articulo.id_user]?.imagen}}"
                              loading="lazy" alt="avatar">
                         <div class="modal-user-info">
                           <span class="modal-username">{{articulo.usuario}}</span>

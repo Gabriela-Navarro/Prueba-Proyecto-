@@ -96,11 +96,11 @@
               <div class="containers">
                 <div class="window">
                   <br>
-                  <img class="user" src="../../../assets/img/{{perfil[articulo.id_user]?.imagen}}">
+                  <img class="user" src="assets/img/{{perfil[articulo.id_user]?.imagen}}">
                   <a class="username">{{articulo.usuario}}</a><br>
                   <ng-container *ngIf="isImage(articulo.imagen); else videoBlock">
                     <div class="clothing-container">
-                      <img class="foto" [src]="'../../../assets/img/' + articulo.imagen" alt="imagen" />
+                      <img class="foto" [src]="'assets/img/' + articulo.imagen" alt="imagen" />
                       <a *ngIf="articulo.prenda1 !== null" href="{{articulo.link1}}" class="buttons accesorios-button" target="_blank" rel="noopener noreferrer">🔗</a>
                       <a *ngIf="articulo.prenda2 !== null" href="{{articulo.link2}}" class="buttons pants-button" target="_blank" rel="noopener noreferrer">🔗</a>
                       <a *ngIf="articulo.prenda3 !== null" href="{{articulo.link3}}" class="buttons top-button" target="_blank" rel="noopener noreferrer">🔗</a>
@@ -111,7 +111,7 @@
                   </ng-container>
                   <ng-template #videoBlock>
                     <video class="video" controls autoplay [muted]="true" loop>
-                      <source [src]="'../../../assets/img/' + articulo.imagen" type="video/mp4">
+                      <source [src]="'assets/img/' + articulo.imagen" type="video/mp4">
                       Tu navegador no soporta la reproducción de video.
                     </video>
                   </ng-template>

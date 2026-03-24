@@ -103,6 +103,8 @@ export class AgregarARTComponent {
       });
     }
 
+    const userId = localStorage.getItem('ids');
+    this.formGroups.patchValue({ autor: userId ? Number(userId) : 0 });
     this.backend.insertarArticulos(formData, this.formGroups.value).subscribe(
       (response) => {
         this.snackBar.open('¡Post publicado con éxito! 🚀💫🌈 ¡Sigue brillando! ✨✨', 'Cerrar', {

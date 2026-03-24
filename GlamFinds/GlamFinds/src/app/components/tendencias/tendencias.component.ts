@@ -355,6 +355,7 @@ export class TendenciasComponent implements OnInit{
   ngOnInit(): void {
     this.backend1.obtenerTendencias().subscribe(async x => {
       this.dataSource = x.datos;
+      this.filteredItems = [...this.dataSource];
       console.log(x.datos);
       console.log(this.filteredItems);
       this.dataSource.forEach(post => {
@@ -416,13 +417,15 @@ export class TendenciasComponent implements OnInit{
       if (this.toggle[index]) {
         this.backend1.eliminarLike(post,navegante).subscribe(y=> {
           this.toggle[index] = false;
-          this.likes[post].cantidad--;
+          if (!this.likes[post]) this.likes[post] = { cantidad: 0 } as any;
+          if (this.likes[post].cantidad > 0) this.likes[post].cantidad--;
           this.actualizarEstadoLocalStorage();
         });
       } else {
         let listadoLikes = new Likes(post, navegante);
         this.backend1.guardarLikes(listadoLikes).subscribe(y => {
           this.toggle[index] = true;
+          if (!this.likes[post]) this.likes[post] = { cantidad: 0 } as any;
           this.likes[post].cantidad++;
           this.actualizarEstadoLocalStorage();
         });
@@ -618,6 +621,13 @@ export class TendenciasComponent implements OnInit{
   }
   isModalOpen: boolean = false;
   isModalOpen2: boolean = false;
+  activeChip: string = 'Todo';
+  filtrarChip(categoria: string) {
+    this.activeChip = categoria;
+    this.filteredItems = categoria === 'Todo'
+      ? [...this.dataSource]
+      : this.dataSource.filter((p: any) => p.name_categoria?.toLowerCase() === categoria.toLowerCase());
+  }
   showEmojiPicker: { [key: number]: boolean } = {};
 
   toggleModal() { this.isModalOpen = !this.isModalOpen; }

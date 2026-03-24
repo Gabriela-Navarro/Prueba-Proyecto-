@@ -14,7 +14,7 @@ import { AgregarPubUComponent } from '../agregar-pub-u/agregar-pub-u.component';
   styleUrls: ['./menu2.component.scss']
 })
 export class Menu2Component  {
-  
+
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
   @ViewChild(TendenciasComponent) info!: TendenciasComponent;
   url: any;
